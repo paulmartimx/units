@@ -15,8 +15,7 @@ use Units\Unit;
 
 class UnitManager
 {
-
-	protected $basedir = "Units";
+	
 	protected $basepath;
 	protected $foldersFound;
 	
@@ -26,7 +25,10 @@ class UnitManager
 	function __construct()
 	{
 
-		$this->basepath = app_path($this->basedir);
+		// $config = include __DIR__.'/../config/config.php';
+
+		$this->basepath = config('units.basepath');
+
 		$this->foldersFound = $this->getDirs($this->basepath);
 		$this->units = new Collection;
 
@@ -50,13 +52,13 @@ class UnitManager
 			$manifest = include "{$folder}/manifest.php";
 			
 			$this->units->push(new Unit([
-				"name" => $manifest["name"] ?? null,
+				"name" => $manifest["name"],
 				"path" => $folder,
+				"order" => $manifest["order"] ?? 1,
 				"basename" => basename($folder),
-				"order" => $manifest["order"] ?? null,
-				"hint" => $manifest["hint"] ?? null,
-				"prefix" => $manifest["prefix"] ?? null,
-				"subdirs" => $this->getDirs($folder)
+				"hint" => $manifest["hint"],
+				"subdirs" => $this->getDirs($folder),
+				"manifest" => $manifest				
 			]));
 
 			$this->units = $this->units->sortBy('order');
@@ -64,8 +66,5 @@ class UnitManager
 		}
 	}
 
-	protected function getUnits()
-	{
-		return $this->units;
-	}
+	
 }

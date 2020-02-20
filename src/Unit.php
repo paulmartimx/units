@@ -12,11 +12,11 @@ class Unit
 
 	public $name;
 	public $path;
-	public $basename;
 	public $order;
+	public $basename;
 	public $hint;
-	public $prefix;
 	public $subdirs;
+	public $manifest;	
 	
 	function __construct($options = array())
 	{
@@ -24,11 +24,11 @@ class Unit
 		$props = [
 			"name",
 			"path",
-			"basename",
 			"order",
+			"basename",
 			"hint",
-			"prefix",
-			"subdirs"
+			"subdirs",
+			"manifest"
 		];
 
 		foreach($props as $prop)
