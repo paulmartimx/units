@@ -1,0 +1,35 @@
+    {
+    "name": "intermediatica/units",
+    "description": "interMediatica Units Core",
+    "type": "project",
+    "require": {
+        "php": "^7.2"
+    },
+    
+    "authors": [
+        {
+            "name": "Pablo Marti",
+            "email": "pablo@intermediatica.net"
+        }
+    ],
+
+    "minimum-stability": "dev",
+
+    "autoload": {
+        "psr-4": {
+          "Units\\": "src"
+        }
+      },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Units\\UnitsServiceProvider"
+            ],
+            "aliases": {
+                "Unit": "Units\\Unit",
+                "UnitManager": "Units\\UnitManager"
+            }
+        }
+    }
+}
