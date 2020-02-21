@@ -1,3 +1,5 @@
+
+
 const   gulp = require('gulp'),
         
         //RollupJS
@@ -5,7 +7,9 @@ const   gulp = require('gulp'),
         babel = require('rollup-plugin-babel'),
         resolveNodeModules = require('rollup-plugin-node-resolve'),
         commonJs = require('rollup-plugin-commonjs'),
+        replace = require('rollup-plugin-replace'),
         uglify = require('rollup-plugin-uglify'),
+        alias = require('rollup-plugin-alias'),
 
         // CSS
         sass = require('gulp-sass'),
@@ -31,8 +35,16 @@ const rollupJS = done => {
   return rollup.rollup({
       input: js_entrypoint,
       plugins: [
+        alias({
+          'vue': require.resolve('vue/dist/vue.js')
+        }),
+        replace({
+          'process.env.NODE_ENV': JSON.stringify( 'development' )
+        }),
         babel(),
-        resolveNodeModules(),
+        resolveNodeModules({
+          mainFields: ['main']
+        }),
         commonJs(),
         // uglify.uglify()
       ]      
@@ -43,8 +55,7 @@ const rollupJS = done => {
         name: module_name,
         sourcemap: true,
         globals: {
-          jquery: '$',
-          Popper: 'Popper'
+          'vue': 'Vue'
         }
       });
     });
@@ -57,8 +68,16 @@ const js_vendor = done => {
   return rollup.rollup({
       input: js_vendor_entrypoint,
       plugins: [
+        alias({
+          'vue': require.resolve('vue/dist/vue.js')
+        }),
+        replace({
+          'process.env.NODE_ENV': JSON.stringify( 'development' )
+        }),
         babel(),
-        resolveNodeModules(),
+        resolveNodeModules({
+          mainFields: ['main']
+        }),
         commonJs(),
         uglify.uglify()
       ]
@@ -69,8 +88,8 @@ const js_vendor = done => {
         name: 'vendor',
         sourcemap: true,
         globals: {
-          jquery: '$',
-          Popper: 'Popper'
+          'vue': 'Vue',
+          'moment': 'moment'
         }
       });
     });

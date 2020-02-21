@@ -1,13 +1,15 @@
 <?php
 
 namespace Units;
-
+    
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 
 use Units\UnitManager;
 use Units\Commands\UnitAdd;
+use Units\Commands\UnitList;
+use Units\Commands\UnitGet;
 
 class UnitsServiceProvider extends ServiceProvider
 {
@@ -24,16 +26,18 @@ class UnitsServiceProvider extends ServiceProvider
     {                
 
         $this->commands([
-            UnitAdd::class
+            UnitAdd::class,
+            UnitList::class,
+            UnitGet::class
         ]);
 
+        $this->setHelpers($this->manager->units);
+        $this->setMiddleware($this->manager->units);
         $this->setRoutes($this->manager->units);
         $this->setViews($this->manager->units);
-        $this->setMiddleware($this->manager->units);
+        $this->setBladeComponents($this->manager->units);
         $this->setCommands($this->manager->units);
         $this->setMigrations($this->manager->units);
-        $this->setHelpers($this->manager->units);
-        $this->setBladeComponents($this->manager->units);
         $this->setProviders($this->manager->units);                
 
         $this->setPsr4();
@@ -66,7 +70,7 @@ class UnitsServiceProvider extends ServiceProvider
     protected function setPsr4()
     {
         $loader = require base_path() . '/vendor/autoload.php';
-        $loader->setPsr4("Units\\", config("units.basepath"));
+        $loader->setPsr4("Units\\", config("units.basepath") . "/");
     }
 
     

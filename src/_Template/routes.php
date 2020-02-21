@@ -1,6 +1,6 @@
 <?php
 
-Route::prefix(null)->namespace('Units\%UnitName%\_Controllers')->middleware(['web', 'auth'])->group(function() {
+Route::prefix(null)->namespace('App\Units\%UnitName%\_Controllers')->middleware(['web', 'auth'])->group(function() {
 
 	include __DIR__ . '/Routes/base.php';
 	

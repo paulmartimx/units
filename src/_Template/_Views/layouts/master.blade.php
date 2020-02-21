@@ -1,4 +1,4 @@
-@extends('layouts::master')
+@extends('_::layouts.master')
 
 @section('menu')
 		<li class="menu-item"><a href="{{ route('%UnitHint%.index') }}"><i class="fas fa-cube"></i> %UnitName%</a></li>

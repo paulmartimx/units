@@ -8,7 +8,7 @@ return [
 	"prefix" => null,
 	
 	"composer" => [
-		// vendor/package
+		'intermediatica/units'
 	],
 
 	"aliases" => [
