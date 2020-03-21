@@ -14,8 +14,7 @@ use Units\Commands\UnitGet;
 class UnitsServiceProvider extends ServiceProvider
 {
 
-
-    protected $manager;    
+    protected $manager;
 
     /**
      * Bootstrap services.
@@ -38,7 +37,7 @@ class UnitsServiceProvider extends ServiceProvider
         $this->setBladeComponents($this->manager->units);
         $this->setCommands($this->manager->units);
         $this->setMigrations($this->manager->units);
-        $this->setProviders($this->manager->units);                
+        $this->setProviders($this->manager->units);        
 
         $this->setPsr4();
 

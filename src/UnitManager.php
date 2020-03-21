@@ -36,6 +36,11 @@ class UnitManager
 
 	}
 
+	public static function getUnits()
+	{
+		return (new static)->units;
+	}
+
 	protected function getDirs($path)
 	{
 		return glob("{$path}/*", GLOB_ONLYDIR);
@@ -58,7 +63,7 @@ class UnitManager
 				"basename" => basename($folder),
 				"hint" => $manifest["hint"],
 				"subdirs" => $this->getDirs($folder),
-				"manifest" => $manifest				
+				"manifest" => $manifest
 			]));
 
 			$this->units = $this->units->sortBy('order');

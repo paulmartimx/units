@@ -17,9 +17,11 @@ class Unit
 	public $hint;
 	public $subdirs;
 	public $manifest;	
+	public $nav;	
 	
 	function __construct($options = array())
 	{
+		$this->nav = null;
 
 		$props = [
 			"name",
@@ -28,7 +30,8 @@ class Unit
 			"basename",
 			"hint",
 			"subdirs",
-			"manifest"
+			"manifest",
+			"nav"
 		];
 
 		foreach($props as $prop)
@@ -38,5 +41,14 @@ class Unit
 		}
 
 		return $this;
-	}	
+	}
+
+	public function getNav()
+	{
+		
+		if(file_exists("{$this->path}/nav.php"))
+			$this->nav = include "{$this->path}/nav.php";
+
+		return $this->nav;
+	}
 }

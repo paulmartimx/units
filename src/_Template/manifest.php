@@ -6,6 +6,7 @@ return [
 	"order" => 1,
 	"hint" => "%UnitHint%",
 	"prefix" => null,
+	"version" => "1.0.0",
 	
 	"composer" => [
 		'intermediatica/units'
