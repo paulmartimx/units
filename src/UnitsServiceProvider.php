@@ -119,13 +119,10 @@ class UnitsServiceProvider extends ServiceProvider
     {
         foreach($units as $unit)
         {
-            if(is_dir( "{$unit->path}/Middleware" ))
-                {
-                    foreach($unit->manifest["middleware"] as $alias => $namespace)
-                    {
-                        $this->app['router']->aliasMiddleware($alias, $namespace);
-                    }
-                }
+            foreach($unit->manifest["middleware"] as $alias => $namespace)
+            {
+                $this->app['router']->aliasMiddleware($alias, $namespace);
+            }
         }
     }
 
@@ -137,9 +134,8 @@ class UnitsServiceProvider extends ServiceProvider
     {
         foreach($units as $unit)
         {
-            if(is_dir( "{$unit->path}/Commands" ))
-                if(size($unit->manifest["commands"]) > 0)
-                    $this->commands($unit->manifest["commands"]);
+            if(size($unit->manifest["commands"]) > 0)
+                $this->commands($unit->manifest["commands"]);
         }
     }
 
