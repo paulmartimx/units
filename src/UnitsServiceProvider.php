@@ -134,7 +134,7 @@ class UnitsServiceProvider extends ServiceProvider
     {
         foreach($units as $unit)
         {
-            if(size($unit->manifest["commands"]) > 0)
+            if(count($unit->manifest["commands"]) > 0)
                 $this->commands($unit->manifest["commands"]);
         }
     }
