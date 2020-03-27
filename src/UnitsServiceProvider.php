@@ -31,13 +31,13 @@ class UnitsServiceProvider extends ServiceProvider
         ]);
 
         $this->setHelpers($this->manager->units);
+        $this->setProviders($this->manager->units);        
         $this->setMiddleware($this->manager->units);
         $this->setRoutes($this->manager->units);
         $this->setViews($this->manager->units);
         $this->setBladeComponents($this->manager->units);
         $this->setCommands($this->manager->units);
         $this->setMigrations($this->manager->units);
-        $this->setProviders($this->manager->units);        
 
         $this->setPsr4();
 
