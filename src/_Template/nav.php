@@ -8,19 +8,22 @@ $%UnitHint% = [
 	"title" => "%UnitName%",
 	"link" => route('%UnitHint%.index'),
 
-	"submenus" => [
-		
-		// [
-		// 	"selector" => "",
-		// 	"icon" => "",
-		// 	"label" => "",
-		// 	"title" => "",
-		// 	"link" => "#",
-		// ]
-	]
+	"submenus" => []
+
 ];
 
+// if(user()->perm('%UnitHint%.example'))
+// 	$%UnitHint%["submenus"][] = [
+// 			"selector" => "example",
+// 			"icon" => "fas fa-asterisk",
+// 			"label" => "Example",
+// 			"title" => "Example",
+// 			"link" => route('%UnitHint%.example'),
+// 		];
 
-return  [
-			"%UnitHint%" => $%UnitHint%			
-		];
+$nav = [];
+
+if(user()->perm('nav.%UnitHint%'))
+	$nav["%UnitHint%"] = $%UnitHint%;
+
+return $nav;

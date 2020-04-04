@@ -3,7 +3,7 @@
 return [
 
 	"name" => "%UnitName%",
-	"order" => 1,
+	"order" => 2,
 	"hint" => "%UnitHint%",
 	"prefix" => null,
 	"version" => "1.0.0",
@@ -13,19 +13,19 @@ return [
 	],
 
 	"aliases" => [
-		// 'Example' => 'Units\%UnitName%\_Models\Example'
+		// 'Example' => 'App\Units\%UnitName%\_Models\Example'
 	],
 
 	"providers" => [
-		// 'Units\%UnitName%\Providers\Example'
+		// 'App\Units\%UnitName%\Providers\Example'
 	],	
 
 	"commands" => [
-		// 'Example' => 'Units\%UnitName%\Commands\Example'
+		// 'Example' => 'App\Units\%UnitName%\Console\Example'
 	],
 
 	"middleware" => [
-		// 'Example' => 'Units\%UnitName%\Middleware\Example'
+		// 'Example' => 'App\Units\%UnitName%\Middleware\Example'
 	],
 
 	"blade_components" => [
@@ -34,6 +34,39 @@ return [
 
 	"blade_aliases" => [
 		// '%UnitHint%::example' => 'example'
+	],
+
+	"permissions" => [
+		
+		"title" => "Configurar %UnitName%",
+
+		"nav" => [
+			"title" => "%UnitName%",
+			"requires" => null,
+			"items" => [
+				"%UnitHint%" => "Acceso a %UnitName%"				
+			]
+		],
+
+		"%UnitHint%" => [
+			"title" => "Áreas",
+			"requires" => "nav.%UnitHint%",
+			"items" => [
+				"example" => "Acceso a Example",
+			]
+		],
+
+		// "example" => [
+		// 	"title" => "Example",
+		// 	"requires" => "%UnitHint%.example",
+		// 	"items" => [
+		// 		"__r" => "Consulta",
+		// 		"__w" => "Creación",
+		// 		"__u" => "Edición",
+		// 		"__d" => "Eliminar",
+		// 	]
+		// ],
+
 	]
 
 ];

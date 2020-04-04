@@ -5,7 +5,7 @@
 
 @section('content')
 
-<div class="container-fluid mt-3">
+<div class="container has-margin-top-25">
 	<h5 class="main-title">%UnitName%</h5>	
 </div>
 

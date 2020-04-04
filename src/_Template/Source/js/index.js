@@ -1,17 +1,18 @@
+/*jshint esversion: 6 */
+
+// %UnitName% Components
+// import {SomeComponent} from './components/some-component';
+
+// Collections
+// import {SomeColection} from './collections/some-collection';
+
+// Models
+// import {SomeModel} from './models/some-model';
 
 
-// import {Algo} from './components/algo';
+document.addEventListener("DOMContentLoaded", function() {
+  // 
+});
 
-
-
-// $(document).ready(() => {
-    
-
-
-// });
-
-// $(window).on('load', () => {
-
-    
-
-// });
+// if(id_exists("some-component"))
+// 	window.SomeComponent = new SomeComponent().$mount('#some-component');
