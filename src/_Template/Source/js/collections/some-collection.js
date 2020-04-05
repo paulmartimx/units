@@ -11,9 +11,12 @@ const SomeCollection = Vue.extend({
 						
 			model: 'model',
 			collection: 'all',
+			
 			store_fields: {
 				example: ''
 			},
+
+			store_options: {},
 
 			sortables: [
 				{field: 'example', name: 'Some filter'},
