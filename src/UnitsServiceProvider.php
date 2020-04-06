@@ -10,6 +10,7 @@ use Units\UnitManager;
 use Units\Commands\UnitAdd;
 use Units\Commands\UnitList;
 use Units\Commands\UnitGet;
+use Units\Commands\UnitPublish;
 
 class UnitsServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,8 @@ class UnitsServiceProvider extends ServiceProvider
         $this->commands([
             UnitAdd::class,
             UnitList::class,
-            UnitGet::class
+            UnitGet::class,
+            UnitPublish::class
         ]);
 
         $this->setHelpers($this->manager->units);
