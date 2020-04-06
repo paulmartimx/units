@@ -135,7 +135,8 @@ gulp.task("watch", gulp.series(css, rollupJS, public, dist, (done) => {
     // Compile SASS
     gulp.watch([
                 sass_entrypoint,
-                "scss/**/*.scss"
+                "scss/**/*.scss",
+                "scss/**/*.sass"
                 ], {cwd:'./'}, gulp.series(css));
 
     // Compile JS
