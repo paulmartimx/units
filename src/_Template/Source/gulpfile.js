@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 
 const   gulp = require('gulp'),
         
@@ -34,29 +34,20 @@ const rollupJS = done => {
 
   return rollup.rollup({
       input: js_entrypoint,
-      plugins: [
-        alias({
-          'vue': require.resolve('vue/dist/vue.js')
-        }),
-        replace({
-          'process.env.NODE_ENV': JSON.stringify( 'development' )
-        }),
+      plugins: [        
         babel(),
         resolveNodeModules({
           mainFields: ['main']
         }),
         commonJs(),
-        // uglify.uglify()
+        uglify.uglify()
       ]      
     }).then(bundle => {
       return bundle.write({
         file: './public/js/' + module_name + '.js',
         format: 'iife',
         name: module_name,
-        sourcemap: true,
-        globals: {
-          'vue': 'Vue'
-        }
+        sourcemap: true
       });
     });
 
@@ -67,13 +58,7 @@ const js_vendor = done => {
 
   return rollup.rollup({
       input: js_vendor_entrypoint,
-      plugins: [
-        alias({
-          'vue': require.resolve('vue/dist/vue.js')
-        }),
-        replace({
-          'process.env.NODE_ENV': JSON.stringify( 'development' )
-        }),
+      plugins: [        
         babel(),
         resolveNodeModules({
           mainFields: ['main']
@@ -86,11 +71,7 @@ const js_vendor = done => {
         file: './public/js/vendor.js',
         format: 'iife',
         name: 'vendor',
-        sourcemap: true,
-        globals: {
-          'vue': 'Vue',
-          'moment': 'moment'
-        }
+        sourcemap: true        
       });
     });
 
@@ -136,27 +117,35 @@ const public = (done) => {
       .pipe(gulp.dest(public_dir + module_name ));
 
   done();
-}
+};
 
-gulp.task('default', gulp.series(css, rollupJS, public));
-gulp.task('vendor', gulp.series(css_vendor, js_vendor, public));
 
-gulp.task("watch", gulp.series(css, public, (done) => {
+const dist = (done) => {
+  gulp.src('./public/**/*')
+      .pipe(notify({message: 'Archivos copiados a ../SourceDist.', onLast: true}))
+      .pipe(gulp.dest( '../SourceDist' ));
+  done();
+};
+
+gulp.task('default', gulp.series(css, rollupJS, public, dist));
+gulp.task('vendor', gulp.series(css_vendor, js_vendor, public, dist));
+
+gulp.task("watch", gulp.series(css, rollupJS, public, dist, (done) => {
 
     // Compile SASS
     gulp.watch([
-                sass_entrypoint,                
+                sass_entrypoint,
                 "scss/**/*.scss"
-                ], {cwd:'./'}, gulp.series(css))
+                ], {cwd:'./'}, gulp.series(css));
 
     // Compile JS
     gulp.watch([
                 js_entrypoint,
                 "js/**/*.js"
-                ], {cwd:'./'}, gulp.series(rollupJS))
+                ], {cwd:'./'}, gulp.series(rollupJS));
 
     // Publish compiled assets
-    gulp.watch(["public/**/*"], {cwd:'./'}, gulp.series(public));
+    gulp.watch(["public/**/*"], {cwd:'./'}, gulp.series(public, dist));
 
     done();
 
