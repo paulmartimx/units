@@ -20,7 +20,9 @@ class UnitPublish extends Command
      *
      * @var string
      */
-    protected $description = 'Publica los assets de cada Unit';    
+    protected $description = 'Publica los assets de cada Unit';   
+
+    protected $units_public_dir = 'app_units'; 
 
 
     /**
@@ -31,6 +33,7 @@ class UnitPublish extends Command
     public function __construct()
     {
       parent::__construct();
+
     }
 
     /**
@@ -41,6 +44,10 @@ class UnitPublish extends Command
     public function handle()
     {
       $manager = new UnitManager;
+
+      if(!is_dir(public_path($this->units_public_dir)))
+        mkdir(public_path($this->units_public_dir), 0755);
+
       foreach($manager->getUnits() as $unit)
       {
         if(is_dir("{$unit->path}/SourceDist"))
@@ -48,7 +55,7 @@ class UnitPublish extends Command
           $this->copyContents(
 
             "{$unit->path}/SourceDist",
-            public_path("app_units/{$unit->hint}"),
+            public_path("{$this->units_public_dir}/{$unit->hint}"),
             $this->option('delete')
 
           );
