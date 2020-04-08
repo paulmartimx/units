@@ -36,6 +36,13 @@ return [
 		// '%UnitHint%::example' => 'example'
 	],
 
+
+	"subscriptions" => [
+		"title" => "Eventos de %UnitName%",
+
+		"%UnitHint%.example" => "Example",		
+	],
+
 	"permissions" => [
 		
 		"title" => "Configurar %UnitName%",
@@ -48,13 +55,13 @@ return [
 			]
 		],
 
-		"%UnitHint%" => [
-			"title" => "Áreas",
-			"requires" => "nav.%UnitHint%",
-			"items" => [
-				"example" => "Acceso a Example",
-			]
-		],
+		// "%UnitHint%" => [
+		// 	"title" => "Áreas",
+		// 	"requires" => "nav.%UnitHint%",
+		// 	"items" => [
+		// 		"example" => "Acceso a Example",
+		// 	]
+		// ],
 
 		// "example" => [
 		// 	"title" => "Example",
