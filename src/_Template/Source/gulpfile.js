@@ -8,7 +8,7 @@ const   gulp = require('gulp'),
         resolveNodeModules = require('rollup-plugin-node-resolve'),
         commonJs = require('rollup-plugin-commonjs'),
         replace = require('rollup-plugin-replace'),
-        uglify = require('rollup-plugin-uglify'),
+        {terser} = require('rollup-plugin-terser'),
         alias = require('rollup-plugin-alias'),
 
         // CSS
@@ -40,7 +40,7 @@ const rollupJS = done => {
           mainFields: ['main']
         }),
         commonJs(),
-        uglify.uglify()
+        terser()
       ]      
     }).then(bundle => {
       return bundle.write({
@@ -64,7 +64,7 @@ const js_vendor = done => {
           mainFields: ['main']
         }),
         commonJs(),
-        uglify.uglify()
+        terser()
       ]
     }).then(bundle => {
       return bundle.write({
@@ -85,6 +85,7 @@ const css = (done) => {
       .pipe(sourcemaps.init())
       .pipe(sass())
       .pipe(rename(module_name + '.css'))
+      .pipe(cssnano({zindex: false}))
       .pipe(sourcemaps.write('.'))
       .pipe(notify({message: 'SASS compilado.', onLast: true}))
       .pipe(gulp.dest( './public/css' ))

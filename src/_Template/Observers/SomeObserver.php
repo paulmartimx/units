@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Units\%UnitHint%\Observers;
+namespace App\Units\%UnitName%\Observers;
 
 use Notification;
 use UserSubscription;

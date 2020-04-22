@@ -9,9 +9,7 @@ use App\Units\_\Traits\RelatesToLoggedUser;
 class SomeModel extends BaseModel
 {
 
-	// use Uploadable, RelatesToLoggedUser;	
-	
-    protected $search_fields = ['some', 'columns'];
+	// use Uploadable, RelatesToLoggedUser;
 
     protected $indexed_model = 'SomeModel';
     protected $indexed_group = 'Something';
