@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Model;
+use GenericResource;
 
 class %UnitName%Controller extends Controller
 {
@@ -20,16 +21,31 @@ class %UnitName%Controller extends Controller
         return view('%UnitHint%::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-        return view('%UnitHint%::create');
+
+    public function all(Request $request)
+    {      
+
+      $per_page = $request->per_page ?? 25;
+      $search = $request->search ?? null;
+      $order_by = $request->order_by ?? 'created_at';
+      $sort = $request->sort ?? 'DESC';
+      $filter = (object) $request->filter ?? null;
+
+      $model = Model::search($search)
+                      ->filter($filter)
+                      ->orderBy($order_by, $sort);
+      
+      $model = $model->paginate($per_page);
+
+      return GenericResource::collection($model);
     }
+    
+
+    public function find($id)
+    {
+      return new GenericResource(Model::withAll()->find($id));
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -44,33 +60,9 @@ class %UnitName%Controller extends Controller
 
         $model = Model::create($input);
 
-        push_success('Agregado con éxito');
-        return redirect()->route('%UnitHint%.index');
+        return response()->json($model);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $model = Model::find($id);
-        return view('%UnitHint%::edit', compact('model'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $model = Model::find($id);
-        return view('%UnitHint%::edit', compact('model'));
-    }
+        
 
     /**
      * Update the specified resource in storage.
@@ -88,10 +80,10 @@ class %UnitName%Controller extends Controller
         if($model)
             {
                 $model->update($input);
-                push_success('Actualizado con éxito');
+                
+                return response()->json($model);
             }
-
-        return redirect()->route('%UnitHint%.edit', $id);
+        
     }
 
     /**
@@ -107,9 +99,7 @@ class %UnitName%Controller extends Controller
         if($model)
             {
                 $model->delete();
-                push_success('Eliminado con éxito');
-            }
-
-        return redirect()->route('%UnitHint%.index');
+                return response()->json(true);
+            }        
     }
 }
