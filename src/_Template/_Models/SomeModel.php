@@ -12,6 +12,8 @@ class SomeModel extends BaseModel
 
 	// use Uploadable, RelatesToLoggedUser;
 
+		protected $rels = [];
+
     protected $indexConfig = [
       "group" => 'Something',
       "include" => ['example'],
