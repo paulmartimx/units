@@ -7,7 +7,7 @@ use App\Units\%UnitName%\_Models\BaseModel;
 use App\Units\_\Traits\Uploadable;
 use App\Units\_\Traits\RelatesToLoggedUser;
 
-class SomeModel extends BaseModel
+class SomeModel extends BaseModel 
 {
 
 	// use Uploadable, RelatesToLoggedUser;
