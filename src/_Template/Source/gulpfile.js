@@ -23,8 +23,8 @@ const   gulp = require('gulp'),
 
 
 var module_name = "%UnitHint%";
-var sass_vendor_entrypoint = './vendor.scss';
-var sass_entrypoint = './main.scss';
+var sass_vendor_entrypoint = './vendor.sass';
+var sass_entrypoint = './main.sass';
 var public_dir = '../../../../public/app_units/';
 var js_entrypoint = './main.js';
 var js_vendor_entrypoint = './vendor.js';
@@ -137,7 +137,7 @@ gulp.task("watch", gulp.series(css, rollupJS, public, dist, (done) => {
     gulp.watch([
                 sass_entrypoint,
                 "scss/**/*.scss",
-                "scss/**/*.sass"
+                "sass/**/*.sass"
                 ], {cwd:'./'}, gulp.series(css));
 
     // Compile JS
