@@ -13,7 +13,7 @@ class BaseModel extends Model
 
 		use withAllScope, 
 				withFilterScope, 
-				withActiveInactiveScopes
+				withActiveInactiveScopes,
 				HasFireEvents;
 
     protected $guarded = ['id'];    
