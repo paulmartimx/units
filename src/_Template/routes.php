@@ -1,9 +1,11 @@
 <?php
 
-Route::prefix(_setting('admin_prefix'))
-	->namespace('App\Units\%UnitName%\_Controllers')
-		->middleware(['web', 'auth'])->group(function() {
+use Illuminate\Support\Facades\Route;
 
-	include __DIR__ . '/Routes/base.php';	
+Route::prefix('api/%UnitHint%')
+	->namespace('App\Units\%UnitName%\_Controllers')
+		->middleware(['api', 'auth:sanctum'])->group(function() {
+
+	include __DIR__ . '/Routes/base.php';
 
 });

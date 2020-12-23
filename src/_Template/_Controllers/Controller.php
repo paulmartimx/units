@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Model;
-use GenericResource;
+use App\Units\_\Resources\GenericResource;
 
 class %UnitName%Controller extends Controller
 {
