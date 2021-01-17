@@ -53,19 +53,11 @@ return [
 			"items" => [
 				"%UnitHint%" => "Acceso a %UnitName%"				
 			]
-		],
+		],		
 
 		// "%UnitHint%" => [
-		// 	"title" => "Áreas",
+		// 	"title" => "%UnitName%",
 		// 	"requires" => "nav.%UnitHint%",
-		// 	"items" => [
-		// 		"example" => "Acceso a Example",
-		// 	]
-		// ],
-
-		// "example" => [
-		// 	"title" => "Example",
-		// 	"requires" => "%UnitHint%.example",
 		// 	"items" => [
 		// 		"__r" => "Consulta",
 		// 		"__w" => "Creación",
