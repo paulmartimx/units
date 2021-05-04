@@ -5,7 +5,7 @@ return [
 	"name" => "%UnitName%",
 	"order" => 2,
 	"hint" => "%UnitHint%",
-	"prefix" => null,
+	"prefix" => "%UnitPrefix%",
 	"version" => "1.0.0",
 	
 	"composer" => [

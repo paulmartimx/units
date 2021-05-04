@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/%UnitHint%')
+Route::prefix('api/%UnitPrefix%')
 	->namespace('App\Units\%UnitName%\_Controllers')
 		->middleware(['api', 'auth:sanctum'])->group(function() {
 
