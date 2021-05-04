@@ -72,7 +72,7 @@ export default {
     !production && livereload({ watch: 'public' }),
     production && filesize(),
     copy({
-      targets: [{ src: 'public/assets', dest: '../../../../public' }]
+      targets: [{ src: 'public', dest: '../../../../' }]
     }),
   ],
   watch: {

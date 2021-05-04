@@ -35,7 +35,7 @@
 		@include('%UnitHint%::includes.footer')
 	</section>
 
-	{!! script('assets/app.min.js') !!}
+	{!! script('assets/app.js') !!}
 	@stack('js')
 
 	@include('%UnitHint%::includes.closing-codes')
