@@ -74,13 +74,15 @@ class UnitAdd extends Command
         if(is_dir($this->dest))
             return $this->error("[ERROR]: La carpeta {$this->name} ya existe en {$this->basepath}");
 
-        $this->newLine(2);
+        $this->line('');
+		$this->line('');
         $this->warn('Crear nuevo Unit:');
         $this->line("Template: {$template}");
         $this->line("Nombre del Unit: {$this->name}");
         $this->line("Hint del Unit para vistas: {$this->hint}");
         $this->line("Prefix del Unit para rutas: {$this->prefix}");
-        $this->newLine(2);
+        $this->line('');
+		$this->line('');
         
         if ($this->confirm('¿Confirma?') === false) {
             $this->error("Cancelado");
