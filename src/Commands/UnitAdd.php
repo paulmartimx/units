@@ -17,6 +17,7 @@ class UnitAdd extends Command
     
     protected $basedir;
     protected $basepath;
+    protected $helpers = "";
     protected $source = "";
     protected $dest = "";
 
@@ -45,6 +46,7 @@ class UnitAdd extends Command
 
         $this->basepath = config('units.basepath');
         $this->source = __DIR__."/../_Template";
+        $this->helpers = __DIR__."/../Helpers";
 
     }
 
@@ -90,6 +92,9 @@ class UnitAdd extends Command
 
         mkdir($this->dest, 0755);
 
+
+        $this->installHelpersUnit();
+
         foreach (
          $iterator = new \RecursiveIteratorIterator(
           new \RecursiveDirectoryIterator($this->source, \RecursiveDirectoryIterator::SKIP_DOTS),
@@ -128,6 +133,34 @@ class UnitAdd extends Command
         return 0;
         
     }
+
+    /**
+     * Replaces a string in a file
+     *
+     * @param null
+     * @return boolean $Result status (success | error) & message (file exist, file permissions)
+     */
+
+     public function installHelpersUnit() {
+
+        if(is_dir($this->helpers) == false) {
+            return false;
+        }
+
+        foreach (
+            $iterator = new \RecursiveIteratorIterator(
+             new \RecursiveDirectoryIterator($this->helpers, \RecursiveDirectoryIterator::SKIP_DOTS),
+             \RecursiveIteratorIterator::SELF_FIRST) as $item
+           ) {
+             if ($item->isDir()) {
+               mkdir($this->dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
+             } else {
+               copy($item, $this->dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
+             }
+           }
+
+        return true;
+     }
 
 
     /**
