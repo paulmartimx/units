@@ -30,9 +30,9 @@
 	@include('%UnitHint%::includes.opening-codes')
 
 	<section id="app">
-		@include('web::includes.header')
+		@include('%UnitHint%::includes.header')
 		@yield('content')
-		@include('web::includes.footer')
+		@include('%UnitHint%::includes.footer')
 	</section>
 
 	{!! script('assets/app.min.js') !!}

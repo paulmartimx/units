@@ -1,0 +1,259 @@
+// Import Bulma's core
+@import '~bulma/sass/utilities/_all';
+@import '@/../theme/_theme';
+
+
+// Import Bulma and Buefy styles
+// @import '~bulma';
+@import "~bulma/sass/utilities/_all";
+@import "~bulma/sass/base/_all";
+
+// Bulma: Elements
+// @import "~bulma/sass/elements/box";
+@import "~bulma/sass/elements/button";
+@import "~bulma/sass/elements/container";
+// @import "~bulma/sass/elements/content";
+@import "~bulma/sass/elements/icon";
+// @import "~bulma/sass/elements/image";
+// @import "~bulma/sass/elements/notification";
+@import "~bulma/sass/elements/progress";
+@import "~bulma/sass/elements/table";
+@import "~bulma/sass/elements/tag";
+@import "~bulma/sass/elements/title";
+@import "~bulma/sass/elements/other";
+
+// Bulma: Forms
+@import "~bulma/sass/form/shared";
+@import "~bulma/sass/form/input-textarea";
+@import "~bulma/sass/form/checkbox-radio";
+@import "~bulma/sass/form/select";
+// @import "~bulma/sass/form/file";
+@import "~bulma/sass/form/tools";
+
+// Bulma: Components
+// @import "~bulma/sass/components/breadcrumb";
+@import "~bulma/sass/components/card";
+@import "~bulma/sass/components/dropdown";
+@import "~bulma/sass/components/level";
+// @import "~bulma/sass/components/media";
+// @import "~bulma/sass/components/menu";
+// @import "~bulma/sass/components/message";
+@import "~bulma/sass/components/modal";
+@import "~bulma/sass/components/navbar";
+// @import "~bulma/sass/components/pagination";
+// @import "~bulma/sass/components/panel";
+// @import "~bulma/sass/components/tabs";
+
+// Bulma: Grid
+@import "~bulma/sass/grid/columns";
+// @import "sass/grid/tiles";
+
+// Bulma: Helpers
+@import "~bulma/sass/helpers/color";
+// @import "~bulma/sass/helpers/flexbox";
+// @import "~bulma/sass/helpers/float";
+// @import "~bulma/sass/helpers/other";
+// @import "~bulma/sass/helpers/overflow";
+// @import "~bulma/sass/helpers/position";
+@import "~bulma/sass/helpers/spacing";
+@import "~bulma/sass/helpers/typography";
+@import "~bulma/sass/helpers/visibility";
+
+// Bulma: Layout
+// @import "~bulma/sass/layout/hero";
+@import "~bulma/sass/layout/section";
+@import "~bulma/sass/layout/footer";
+
+// *************************************************
+
+// BUEFY: Utils
+@import "~buefy/src/scss/utils/_all";
+
+// @import "~buefy/src/scss/components/_autocomplete";
+@import "~buefy/src/scss/components/_carousel";
+@import "~buefy/src/scss/components/_checkbox";
+// @import "~buefy/src/scss/components/_clockpicker";
+// @import "~buefy/src/scss/components/_collapse";
+// @import "~buefy/src/scss/components/_datepicker";
+@import "~buefy/src/scss/components/_dialog";
+@import "~buefy/src/scss/components/_dropdown";
+@import "~buefy/src/scss/components/_form";
+@import "~buefy/src/scss/components/_icon";
+@import "~buefy/src/scss/components/_image";
+@import "~buefy/src/scss/components/_loading";
+// @import "~buefy/src/scss/components/_menu";
+@import "~buefy/src/scss/components/_message";
+@import "~buefy/src/scss/components/_modal";
+@import "~buefy/src/scss/components/_navbar";
+// @import "~buefy/src/scss/components/_notices";
+@import "~buefy/src/scss/components/_numberinput";
+// @import "~buefy/src/scss/components/_pagination";
+@import "~buefy/src/scss/components/_progress";
+@import "~buefy/src/scss/components/_radio";
+// @import "~buefy/src/scss/components/_rate";
+// @import "~buefy/src/scss/components/_select";
+// @import "~buefy/src/scss/components/_skeleton";
+// @import "~buefy/src/scss/components/_sidebar";
+// @import "~buefy/src/scss/components/_slider";
+// @import "~buefy/src/scss/components/_steps";
+@import "~buefy/src/scss/components/_switch";
+// @import "~buefy/src/scss/components/_table";
+// @import "~buefy/src/scss/components/_tabs";
+// @import "~buefy/src/scss/components/_tag";
+// @import "~buefy/src/scss/components/_taginput";
+// @import "~buefy/src/scss/components/_timepicker";
+@import "~buefy/src/scss/components/_tooltip";
+// @import "~buefy/src/scss/components/_upload";
+
+// @import Material Design Icons;
+// @import '~@mdi/font/scss/materialdesignicons';
+
+@import "custom_mdi_variables";
+@import "~@mdi/font/scss/functions";
+@import "~@mdi/font/scss/path";
+@import "~@mdi/font/scss/core";
+@import "~@mdi/font/scss/icons";
+@import "~@mdi/font/scss/extras";
+@import "~@mdi/font/scss/animated";
+
+
+
+.modal .modal-content {
+  width: 95%;
+}
+
+.notices, .notices * {
+  z-index: 1010 !important;
+}
+
+@media screen and (max-width: 768px), print {
+  .button.is-fullwidth-mobile {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .modal .animation-content {
+      width: 95% !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .navbar-dropdown {
+      min-width: 300px !important;
+    }
+  }
+
+.mh {
+  &-70 {
+    max-height: 70px;
+  }
+  &-80 {
+    max-height: 80px;
+  }
+  &-100 {
+    max-height: 100px;
+  }
+  &-150 {
+    max-height: 150px;
+  }
+  &-200 {
+    max-height: 200px;
+  }
+}
+
+.mw {
+  &-50 {
+    max-width: 50px;
+  }
+  &-80 {
+    max-width: 80px;
+  }
+  &-100 {
+    max-width: 100px;
+  }
+  &-150 {
+    max-width: 150px;
+  }
+  &-200 {
+    max-width: 200px;
+  }
+  &-250 {
+    max-width: 250px;
+  }
+  &-300 {
+    max-width: 300px;
+  }
+  &-400 {
+    max-width: 400px;
+  }
+  &-500 {
+    max-width: 500px;
+  }
+  &-600 {
+    max-width: 600px;
+  }
+  &-700 {
+    max-width: 700px;
+  }
+  &-800 {
+    max-width: 800px;
+  }
+  &-900 {
+    max-width: 900px;
+  }
+}
+
+
+.minw {
+  &-100 {
+    min-width: 100px;
+  }
+  &-150 {
+    min-width: 150px;
+  }
+  &-200 {
+    min-width: 200px;
+  }
+  &-250 {
+    min-width: 250px;
+  }
+  &-300 {
+    min-width: 300px;
+  }
+  &-400 {
+    min-width: 400px;
+  }
+  &-500 {
+    min-width: 500px;
+  }
+  &-600 {
+    min-width: 600px;
+  }
+  &-700 {
+    min-width: 700px;
+  }
+  &-800 {
+    min-width: 800px;
+  }
+  &-900 {
+    min-width: 900px;
+  }
+}
+
+.lineh {
+  &-0 {
+    line-height: 0;
+  }
+  &-1 {
+    line-height: 1;
+  }
+  &-1-5 {
+    line-height: 1.5;
+  }
+}
+
+.m-auto {
+  margin: auto
+}

@@ -11,9 +11,10 @@ import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import filesize from 'rollup-plugin-filesize'
 import requireContext from 'rollup-plugin-require-context'
+import copy from "rollup-plugin-copy";
+import precss from 'precss';
 import postcssImport from 'postcss-import'
 import postcssCustomMedia from 'postcss-custom-media'
-import postcssNested from 'postcss-nested'
 import postcssSortMediaQueries from 'postcss-sort-media-queries'
 import cssnano from 'cssnano'
 
@@ -23,7 +24,7 @@ const port = 8080
 const postCssPlugins = [
   postcssImport(),
   postcssCustomMedia(),
-  postcssNested(),
+  precss(),
   postcssSortMediaQueries(),
   production && cssnano(),
 ]
@@ -35,6 +36,7 @@ export default {
     entryFileNames: 'app.js',
     format: 'iife',
     sourcemap: !production ? 'inline' : false,
+    needMap: false,
     name: 'app',
   },
   plugins: [
@@ -69,6 +71,9 @@ export default {
       }),
     !production && livereload({ watch: 'public' }),
     production && filesize(),
+    copy({
+      targets: [{ src: 'public/assets', dest: '../../../../public' }]
+    }),
   ],
   watch: {
     clearScreen: true,
