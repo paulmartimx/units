@@ -143,8 +143,9 @@ class UnitAdd extends Command
 
      public function installHelpersUnit() {
 
-        if(is_dir($this->helpers) == false) {
-            return false;
+        $helpers_dest = "{$this->basepath}/" . basename($this->helpers);
+        if(is_dir($helpers_dest) == false) {
+            mkdir($helpers_dest, 0755);
         }
 
         foreach (
@@ -153,9 +154,9 @@ class UnitAdd extends Command
              \RecursiveIteratorIterator::SELF_FIRST) as $item
            ) {
              if ($item->isDir()) {
-               mkdir($this->dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
+               mkdir($helpers_dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
              } else {
-               copy($item, $this->dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
+               copy($item, $helpers_dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
              }
            }
 
