@@ -1,6 +1,6 @@
 @extends('%UnitHint%::layouts.master')
 
-@section('document-title', 'Bienvenidos')
+@section('document-title', 'Acerca de nosotros')
 @section('meta-description', '')
 
 @section('content')

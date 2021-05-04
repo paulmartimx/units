@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/%UnitPrefix%')
+Route::prefix('%UnitPrefix%')
 	->namespace('App\Units\%UnitName%\_Controllers')
 	->middleware(['web'])->group(function () {
 

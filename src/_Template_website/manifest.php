@@ -41,6 +41,4 @@ return [
 
 	"permissions" => [],
 
-	]
-
 ];
