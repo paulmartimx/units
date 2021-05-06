@@ -5,7 +5,6 @@
 // Import vue pre-compiled for allowing use the app on-premise (Laravel and others)
 import Vue from 'vue/dist/vue.esm';
 
-import VueCompositionAPI, { createApp } from '@vue/composition-api'
 import Vuex from 'vuex';
 import {
   Autocomplete,
@@ -57,7 +56,6 @@ import '@/assets/styles.scss';
 
 Vue.config.productionTip = false
 
-Vue.use(VueCompositionAPI)
 Vue.use(Vuex)
 
 Vue.use(Autocomplete)
@@ -101,10 +99,11 @@ Vue.use(Toast)
 Vue.use(Tooltip)
 Vue.use(Upload)
 
-const app = createApp({
+const app = new Vue({
   render: (h) => h(App),
   store: new Vuex.Store(store),
   i18n,
+  el: "#app"
 })
 
-app.mount('#app')
+// app.mount('#app')

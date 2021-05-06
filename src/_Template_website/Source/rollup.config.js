@@ -3,7 +3,6 @@ import json from '@rollup/plugin-json'
 import replace from '@rollup/plugin-replace'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import image from '@rollup/plugin-image'
 import postcss from 'rollup-plugin-postcss'
 import vue from 'rollup-plugin-vue'
 import esbuild from 'rollup-plugin-esbuild'
@@ -11,22 +10,16 @@ import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
 import filesize from 'rollup-plugin-filesize'
 import requireContext from 'rollup-plugin-require-context'
-import copy from "rollup-plugin-copy";
-import precss from 'precss';
-import postcssImport from 'postcss-import'
-import postcssCustomMedia from 'postcss-custom-media'
-import postcssSortMediaQueries from 'postcss-sort-media-queries'
-import cssnano from 'cssnano'
+import copy from "rollup-plugin-copy"
+import precss from 'precss'
+import clean from 'postcss-clean'
 
 const production = !process.env.ROLLUP_WATCH
 const port = 8080
 
 const postCssPlugins = [
-  postcssImport(),
-  postcssCustomMedia(),
   precss(),
-  postcssSortMediaQueries(),
-  production && cssnano(),
+  production && clean(),
 ]
 
 export default {
@@ -36,7 +29,7 @@ export default {
     entryFileNames: 'app.js',
     format: 'iife',
     sourcemap: !production ? 'inline' : false,
-    needMap: false,
+    // needMap: false,
     name: 'app',
   },
   plugins: [
@@ -44,7 +37,6 @@ export default {
     alias({
       entries: [{ find: '@', replacement: __dirname + '/src/' }],
     }),
-    image(),
     postcss({ extract: 'app.css', plugins: postCssPlugins }),
     requireContext(),
     nodeResolve({
