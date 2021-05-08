@@ -146,6 +146,12 @@ class UnitAdd extends Command
      public function installHelpersUnit() {
 
         $helpers_dest = "{$this->basepath}/" . basename($this->helpers);
+
+        if(is_dir($helpers_dest)) {
+            $this->line("[INFO] Unit Helpers ya instalada, se omitió el paso.");
+            return false;
+        }    
+
         if(is_dir($helpers_dest) == false) {
             mkdir($helpers_dest, 0755);
         }
